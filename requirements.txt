@@ -1,0 +1,11 @@
+# Clima Mind — Python 3.10+
+# Stdlib (no install): tkinter, smtplib, json, threading, pathlib, …
+
+requests>=2.31.0,<3
+Pillow>=10.0.0
+schedule>=1.2.0
+pygame>=2.5.0
+mutagen>=1.47.0
+matplotlib>=3.8.0
+pyperclip>=1.8.2
+python-dotenv>=1.0.0,<2

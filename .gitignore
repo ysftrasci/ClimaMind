@@ -1,0 +1,78 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# --- Virtual environments ---
+.venv/
+venv/
+ENV/
+env/
+.env.bak/
+
+# --- Secrets & local config ---
+.env
+.env.*
+!.env.example
+
+# Local user database (passwords, chat history, reminders)
+users.json
+
+# --- Logs ---
+*.log
+logs/
+climamind.log
+
+# --- IDE / editors ---
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# --- OS ---
+.DS_Store
+.DS_Store?
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# --- Testing / coverage ---
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.hypothesis/
+
+# --- Jupyter ---
+.ipynb_checkpoints/
+
+# --- AI / assistant tooling ---
+.cursor/
+
+# --- Optional: large local media (uncomment if you do not commit audio tracks) ---
+# Müzikler/

@@ -1,0 +1,19 @@
+{
+  "user@example.com": {
+    "password": "change_me",
+    "verified": true,
+    "favorites": ["London"],
+    "reminder": {
+      "time": "08:00",
+      "city": "London",
+      "frequency": "every_day",
+      "custom_days": []
+    },
+    "account": {
+      "username": "Demo User",
+      "district": "London",
+      "profile_picture": "No file selected"
+    },
+    "chat_history": []
+  }
+}
