@@ -1,117 +1,89 @@
-# Clima Mind (Umbrella Reminder)
+# ClimaMind
 
-A desktop weather and lifestyle app built with **Python** and **Tkinter**. Search weather, chat with **Joyuci**, set email reminders, relax with nature sounds, and manage your account — all in one place.
+Python ve Tkinter ile yazılmış masaüstü hava durumu uygulaması. Şehir bazlı anlık hava verisi, e-posta hatırlatıcıları, Joyuci sohbet asistanı ve doğa sesleri tek pencerede toplanıyor. Klasik bir hava durumu uygulamasından ziyade kullanım süresini arttırmak için ekstra özellikler içerir. İlk geniş kapsamlı proje denemem.
 
-## Features
+## Ne yapar?
 
-- **Search Weather** — current conditions for any city (OpenWeatherMap)
-- **Joyuci** — AI-style weather assistant (forecasts, safety tips, activity ideas)
-- **Reminders** — scheduled weather emails
-- **Relaxing Music** — nature ambience player
-- **Account** — registration, favorites, profile, password reset
+- **Search Weather** — OpenWeatherMap üzerinden şehir arama ve hava durumu sonuç ekranı
+- **Joyuci** — Haftalık tahmin, tehlikeli koşullar ve aktivite önerileri için sohbet arayüzü. Bahsettiğiniz konumdaki hava durumuna göre sizlere yardımcı olur.
+- **Reminders** — Belirlediğin saatte ve şehirde otomatik hava durumu e-postası gönderir. 
+- **Relaxing Music** — Kullanıcıyı uygulamada tutma amaçlı kullanıcı günlük işleriyle ilgilenirken dinlenilebilecek odak arttıran sesler. Hava durumu uygulaması olduğu için çoğunlukla doğa sesleri içerir.
+- **Hesap** — Kayıt, giriş, favori şehirler, profil, şifre sıfırlama gibi temel özellikler.
 
-## Requirements
+Kullanıcı verileri yerel `users.json` dosyasında tutulur. API ve mail ayarları `.env` dosyasından okunur.
 
-- **Python 3.10+** (Tkinter included with most Python installs on Windows)
-- OpenWeatherMap API key
-- SMTP credentials (optional, for registration / reminders / password reset)
+## Gereksinimler
 
-## Quick start
+- Python 3.10 veya üzeri
+- [OpenWeatherMap](https://openweathermap.org/api) API anahtarı
+- SMTP bilgileri
 
-### 1. Clone the repository
+## Kurulum
+
+Depoyu klonla ve proje köküne gir:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/UmbrellaReminder.git
+git clone https://github.com/ysftrasci/ClimaMind.git
 cd UmbrellaReminder
 ```
 
-### 2. Create a virtual environment (recommended)
+Sanal ortam (önerilir):
 
 ```bash
 python -m venv .venv
-
-# Windows
-.venv\Scripts\activate
-
-# macOS / Linux
-source .venv/bin/activate
+.venv\Scripts\activate          # Windows
+# source .venv/bin/activate     # macOS / Linux
 ```
 
-### 3. Install dependencies
+Bağımlılıklar:
 
 ```bash
-pip install -r requirements.txt
+pip install -r requirements.txt #Gerekli malzemeleri otomatik projeye dahil eder.
 ```
 
-### 4. Configure secrets
+Ortam değişkenleri:
 
 ```bash
 copy .env.example .env
 ```
 
-Edit `.env` and set:
+`.env` içine en az şunları yaz:
 
-| Variable | Description |
-|----------|-------------|
-| `OPENWEATHER_API_KEY` | From [OpenWeatherMap](https://openweathermap.org/api) |
-| `SMTP_SENDER_EMAIL` | Sender email address |
-| `SMTP_SENDER_PASSWORD` | App password (e.g. Gmail App Password) |
-| `SMTP_HOST` / `SMTP_PORT` | Usually `smtp.gmail.com` / `587` |
 
-### 5. Local user data (first run)
+| Değişken               | Açıklama                     |
+| ---------------------- | ---------------------------- |
+| `OPENWEATHER_API_KEY`  | OpenWeather API key          |
+| `SMTP_SENDER_EMAIL`    | Gönderen e-posta adresi      |
+| `SMTP_SENDER_PASSWORD` | Gmail için App Password.     |
+| `SMTP_HOST`            | Varsayılan: `smtp.gmail.com` |
+| `SMTP_PORT`            | Varsayılan: `587`            |
 
-`users.json` is **not** in Git (it contains passwords). For a fresh setup:
 
-```bash
-copy users.example.json users.json
-```
+## Çalıştırma
 
-Or start the app and **Sign Up** to create your first account.
-
-### 6. Run the app
+Proje kökünden:
 
 ```bash
 python run.py
 ```
 
-No `PYTHONPATH` setup is required — `run.py` adds `src/` automatically.
-
-## Project layout
+## Proje yapısı
 
 ```
 UmbrellaReminder/
-├── run.py              # Entry point
+├── run.py
 ├── requirements.txt
-├── .env.example        # Template for secrets (copy to .env)
-├── users.example.json  # Template for local user DB
-├── src/climamind/      # Application code
-│   ├── app.py          # Bootstrap & DI
-│   ├── config/         # Settings & paths
-│   ├── domain/         # Models
-│   ├── infrastructure/ # API, email, persistence, audio
-│   ├── services/       # Business logic
-│   └── ui/             # Views & widgets
-├── Resimler/           # UI images
-├── sounds/             # UI sound effects
-└── Müzikler/           # Nature sound MP3s (add your own tracks)
+├── .env.example
+├── users.example.json
+├── src/climamind/
+│   ├── app.py              # Başlangıç ve servis bağlantıları
+│   ├── config/
+│   ├── domain/
+│   ├── infrastructure/   # API, SMTP, users.json, ses
+│   ├── services/
+│   └── ui/views/           # Ekranlar
+├── Resimler/               # Arayüz görselleri
+├── sounds/                 # Tıklama vb. efektler
+└── Müzikler/               # Müzik MP3’leri 
 ```
 
-## Security notes
-
-- **Never commit** `.env` or `users.json`.
-- If API keys or passwords were ever committed to Git, **rotate them** in the provider dashboards and treat the old values as compromised.
-- Use Gmail **App Passwords** (not your main account password) for SMTP.
-
-## License
-
-Add your license here (e.g. MIT) if you publish the repository.
-
-## Contributing
-
-1. Fork the repo  
-2. Create a feature branch  
-3. Open a pull request  
-
----
-
-**Clima Mind** — stay dry, stay informed.
